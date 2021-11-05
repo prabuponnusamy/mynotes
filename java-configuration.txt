@@ -1,0 +1,49 @@
+sudo apt update
+search of all available packages:
+
+sudo apt search openjdk
+Pick one option and install it:
+
+sudo apt install openjdk-17-jdk
+sudo apt install openjdk-17-doc
+sudo apt install openjdk-17-source
+
+sudo apt install openjdk-8-jdk
+sudo apt install openjdk-8-doc
+sudo apt install openjdk-8-source
+
+sudo apt install openjdk-11-jdk
+sudo apt install openjdk-11-doc
+sudo apt install openjdk-11-source
+
+Confirm installation:
+
+sudo apt install openjdk-11-jdk
+checking installation:
+
+java -version
+
+sudo update-alternatives --display java
+sudo update-alternatives --config java
+
+sudo update-alternatives --remove "java" "/usr/lib/jvm/jdk<version>/bin/java"
+sudo update-alternatives --remove "javac" "/usr/lib/jvm/jdk<version>/bin/javac"
+sudo update-alternatives --remove "javaws" "/usr/lib/jvm/jdk<version>/bin/javaws"
+
+
+prabu@prabu-ubuntu:/usr/share/java$ sudo update-alternatives --config java
+There are 3 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                            Priority   Status
+------------------------------------------------------------
+  0            /usr/lib/jvm/java-17-openjdk-amd64/bin/java      1711      auto mode
+* 1            /usr/lib/jvm/java-11-openjdk-amd64/bin/java      1111      manual mode
+  2            /usr/lib/jvm/java-17-openjdk-amd64/bin/java      1711      manual mode
+  3            /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java   1081      manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: ^C
+
+
+
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java
+

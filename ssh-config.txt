@@ -1,0 +1,49 @@
+Let us get into the steps – running all the commands in terminal
+
+Step 1 : Install OpenSSH package if not installed
+
+sudo apt install openssh-server
+
+Step 2 : Create separate group for SFTP users.
+
+sudo addgroup sftpgroup
+
+Step 3 : Edit /etc/ssh/sshd_config file and make changes as below. I will be using the vim editor
+
+Find and comment below line.
+
+# Subsystem sftp /usr/lib/openssh/sftp-server
+
+After commenting i saved the file, now again
+
+and add these lines to the end of the file.
+
+Subsystem sftp internal-sftp
+
+Match group sftpgroup
+
+ChrootDirectory %h
+
+X11Forwarding no
+
+AllowTcpForwarding no
+
+ForceCommand internal-sftp
+
+Step 4 : Restart sshd service.
+
+sudo service ssh restart
+
+Step 5 : Add user with ftpaccess group and create password.
+
+sudo adduser sftpuser --ingroup sftpgroup --shell /usr/sbin/nologin
+
+Step 6 : Modify home directory permission.
+
+sudo chown root:root /home/sftpuser
+
+Step 7 : Create a directory inside home for upload and modify permission with group.
+
+sudo mkdir /home/sftpuser/sftpdir
+
+sudo chown sftpuser:sftpgroup /home/sftpuser/sftpdir
